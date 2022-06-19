@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         this.transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        Destroy(this.gameObject, 2.0f);
+        Destroy(this.gameObject, 0.5f);
     }
     private void OnTriggerEnter(Collider other)
     {

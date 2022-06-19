@@ -52,13 +52,21 @@ namespace EnemyState
             castleObserver = GameObject.Find("Castle").GetComponent<Castle>();
             castleObserver.myEvent += doFireworks;
         }
+        public void doReset()
+        {
+            isFireworked = false;
+            Die();
+        }
 
         public void doFireworks()
         {
             navAgent.SetDestination(this.transform.position);
             if (!isFireworked)
             {
-                Instantiate(firework, this.transform);
+                Instantiate(firework, new Vector3(
+                    this.transform.position.x
+                    ,this.transform.position.y + 2.0f
+                    , this.transform.position.z), this.transform.rotation);
                 isFireworked = true;
             }
         }

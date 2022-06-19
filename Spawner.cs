@@ -32,6 +32,7 @@ public class Spawner : MonoBehaviour
         }
         StartCoroutine(EnemySpawn());
     }
+
     public void InsertEnemy(GameObject enemy)
     {
         q_enemy.Enqueue(enemy);

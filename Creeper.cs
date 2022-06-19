@@ -17,7 +17,7 @@ namespace EnemyState
         // Start is called before the first frame update
         protected override void Start()
         {
-            baseColor = Color.cyan;
+            baseColor = Color.green;
             attackCoolDownWaitForSeconds = new WaitForSeconds(attackCoolDown);
             base.Start();
         }
@@ -45,7 +45,10 @@ namespace EnemyState
                         if(this.state_timer > 0.2f)
                         {
                             isHitted = false;
-                            this.next_state = EnemyState.MOVE;
+                            if (distance < attackRange)
+                                this.next_state = EnemyState.ATTACK;
+                            else
+                                this.next_state = EnemyState.MOVE;
                         }
                         break;
                     case EnemyState.ATTACK:
@@ -93,6 +96,7 @@ namespace EnemyState
         {
             base.Die();
             gameObject.SetActive(false);
+            isAttackCoolDown = false;
             Spawner.instance.InsertEnemy(gameObject);
         }
 

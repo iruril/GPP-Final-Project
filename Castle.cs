@@ -22,4 +22,9 @@ public class Castle : HPController
     {
         return dead;
     }
+
+    public void doReset()
+    {
+        this.Start();
+    }
 }
